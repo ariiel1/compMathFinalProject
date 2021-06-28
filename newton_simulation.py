@@ -19,13 +19,13 @@ class Newton:
 
         while True:
             self.ax.plot(self.x, 0, "bo") #original estimate
-            plt.pause(0.2)
+            plt.pause(0.3)
             self.ax.plot(self.x, self.f(self.x), "o", c="black") 
             print(f"x{counter}: {self.x}")
-            plt.pause(0.2)
+            plt.pause(0.3)
 
             self.ax.plot([self.x, self.x], [0, self.f(self.x)], "k--d")
-            plt.pause(0.2)
+            plt.pause(0.3)
 
             old = self.x  
             self.x = self.x - (self.f(self.x) / der()) #new estimate
@@ -38,13 +38,13 @@ class Newton:
             
             if abs(self.f(self.x)) < 1.0E-6:    #estimate is accurate to 1.0x10^6 
                 self.ax.plot(self.x, 0, "o", c="pink")
-                plt.pause(0.2)
+                plt.pause(0.3)
                 return self.x, counter
 
 def main():
 
     print("Welcome!")
-    print("\nPlease enter a function below")
+    print("\nPlease choose a function below")
     print("a) x^2")
     print("b) 2x^2 - x - 2")
     print("c) 1 - x^2 + 2^x")
@@ -75,6 +75,7 @@ def main():
 
     x = np.linspace(-10, 10, 1000)
 
+    #plotting
     fig = plt.figure(figsize=(10, 5))
     ax = fig.add_subplot(1, 1, 1)
     ax.plot(x, f(x), color="orange")
